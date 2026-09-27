@@ -1,0 +1,31 @@
+---
+import LepMark from "./LepMark.astro";
+import { plataforma } from "../data/plataforma";
+
+// Destaca o final da frase ("fluxos mais simples, conectados e inteligentes.").
+const corte = plataforma.encerramento.indexOf("fluxos");
+const inicio = plataforma.encerramento.slice(0, corte);
+const destaque = plataforma.encerramento.slice(corte);
+---
+<section class="encerramento" aria-labelledby="encerramento-titulo">
+  <div class="envoltorio encerramento__quadro">
+    <span class="canto canto--se" aria-hidden="true"></span>
+    <span class="canto canto--sd" aria-hidden="true"></span>
+    <span class="canto canto--ie" aria-hidden="true"></span>
+    <span class="canto canto--id" aria-hidden="true"></span>
+
+    <p class="rotulo rotulo--secao revelar"><span>[04]</span> Encerramento</p>
+    <h2 id="encerramento-titulo" class="encerramento__frase revelar">
+      {inicio}<em>{destaque}</em>
+    </h2>
+  </div>
+
+  <footer class="rodape envoltorio">
+    <LepMark class="rodape__simbolo" titulo="LEP" />
+    <p class="rotulo">{plataforma.nome}</p>
+    <p class="selo-status">
+      <span class="rec" aria-hidden="true"></span>
+      {plataforma.status}
+    </p>
+  </footer>
+</section>

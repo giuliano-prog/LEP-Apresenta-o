@@ -1,0 +1,19 @@
+{
+  "name": "lep-plataforma-apresentacao",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Página institucional da Plataforma LEP — Inteligência e Automação para Audiovisual",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource/dm-serif-display": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "astro": "^7.3.5"
+  }
+}

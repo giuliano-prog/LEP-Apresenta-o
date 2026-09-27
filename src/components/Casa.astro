@@ -1,0 +1,72 @@
+---
+// Planta baixa da casa da LEP: cômodos (módulos) sobre a fundação (núcleo).
+// variante "planta": apresentação completa, na seção A Casa.
+// variante "visao": mesma planta; os cômodos planejados acendem com a rolagem.
+import { modulos, nucleo, STATUS_LABEL } from "../data/plataforma";
+
+interface Props {
+  variante?: "planta" | "visao";
+}
+const { variante = "planta" } = Astro.props;
+
+const idTitulo = `planta-${variante}-titulo`;
+---
+<figure
+  class:list={["planta", `planta--${variante}`]}
+  aria-labelledby={idTitulo}
+  data-planta={variante}
+>
+  <div class="planta__cota" aria-hidden="true">
+    <span></span>
+    <p class="rotulo" id={idTitulo}>
+      {variante === "planta" ? "Planta · Casa digital da LEP" : "Planta · Expansão progressiva"}
+    </p>
+    <span></span>
+  </div>
+
+  <div class="planta__area">
+    <ul class="planta__comodos" aria-label="Módulos">
+      {modulos.map((m, i) => (
+        <li
+          class:list={["comodo", m.area && `comodo--${m.area}`]}
+          data-status={m.status}
+          style={`--i:${i}`}
+        >
+          <span class="comodo__codigo" aria-hidden="true">
+            M{String(i + 1).padStart(2, "0")}
+          </span>
+          <span class="comodo__nome">{m.nome}</span>
+          <span class="comodo__status">
+            <span class="ponto" aria-hidden="true"></span>
+            {STATUS_LABEL[m.status]}
+          </span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="fundacao" data-status="fundacao">
+      <div class="fundacao__titulo">
+        <span class="comodo__codigo" aria-hidden="true">N00</span>
+        <span class="fundacao__nome">Núcleo</span>
+        <span class="comodo__status">
+          <span class="ponto" aria-hidden="true"></span>
+          {STATUS_LABEL.fundacao}
+        </span>
+      </div>
+      <ul class="fundacao__itens" aria-label="Serviços do núcleo">
+        {nucleo.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+
+  <figcaption class="planta__legenda">
+    <ul>
+      <li data-status="fundacao"><span class="amostra" aria-hidden="true"></span>Fundação</li>
+      <li data-status="desenvolvimento"><span class="amostra" aria-hidden="true"></span>Em desenvolvimento</li>
+      <li data-status="planejado"><span class="amostra" aria-hidden="true"></span>Planejado</li>
+    </ul>
+    {variante === "visao" && (
+      <p class="planta__nota">Representação ilustrativa. Sem ordem de lançamento ou datas definidas.</p>
+    )}
+  </figcaption>
+</figure>

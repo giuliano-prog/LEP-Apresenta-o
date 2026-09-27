@@ -1,0 +1,36 @@
+---
+import { fluxoEditais } from "../data/plataforma";
+---
+<section id="modulo-atual" class="secao secao--modulo" aria-labelledby="modulo-titulo">
+  <div class="envoltorio">
+    <header class="secao__cabecalho revelar">
+      <p class="rotulo rotulo--secao"><span>[02]</span> Módulo atual</p>
+      <p class="selo-status">
+        <span class="rec" aria-hidden="true"></span>
+        Em desenvolvimento
+      </p>
+      <h2 id="modulo-titulo" class="secao__titulo">
+        Captação de Recursos <em>/ Editais</em>
+      </h2>
+      <p class="secao__intro">
+        O primeiro cômodo da casa a ganhar vida. Estas são as capacidades que estão sendo desenvolvidas neste módulo:
+      </p>
+    </header>
+
+    <div class="fluxo" data-fluxo>
+      <span class="fluxo__trilha" aria-hidden="true"><span></span></span>
+      <ol class="fluxo__etapas" aria-label="Fluxo do módulo de Editais">
+      {fluxoEditais.map((etapa, i) => (
+        <li class="etapa" style={`--i:${i}`}>
+          <span class="etapa__marca" aria-hidden="true"></span>
+          <span class="etapa__indice" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+          <span class="etapa__nome">{etapa.curto}</span>
+          {etapa.completo !== etapa.curto && (
+            <span class="etapa__detalhe">{etapa.completo}</span>
+          )}
+        </li>
+      ))}
+      </ol>
+    </div>
+  </div>
+</section>

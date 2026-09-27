@@ -1,0 +1,36 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Casa from "../components/Casa.astro";
+import ModuloAtual from "../components/ModuloAtual.astro";
+import Visao from "../components/Visao.astro";
+import Encerramento from "../components/Encerramento.astro";
+import { plataforma } from "../data/plataforma";
+---
+<Base titulo={plataforma.nome} descricao={plataforma.apoio}>
+  <Header />
+  <main id="conteudo">
+    <Hero />
+
+    <section id="casa" class="secao secao--casa" aria-labelledby="casa-titulo">
+      <div class="envoltorio">
+        <header class="secao__cabecalho revelar">
+          <p class="rotulo rotulo--secao"><span>[01]</span> A casa da LEP</p>
+          <h2 id="casa-titulo" class="secao__titulo">
+            Uma fundação, <em>muitos cômodos.</em>
+          </h2>
+          <p class="secao__intro">
+            A plataforma é a casa digital da LEP. Um núcleo compartilhado sustenta módulos
+            independentes, que serão construídos progressivamente.
+          </p>
+        </header>
+        <Casa variante="planta" />
+      </div>
+    </section>
+
+    <ModuloAtual />
+    <Visao />
+    <Encerramento />
+  </main>
+</Base>

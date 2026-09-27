@@ -1,0 +1,36 @@
+---
+import Marca from "./Marca.astro";
+import { secoes } from "../data/plataforma";
+---
+<header class="topo" data-topo>
+  <div class="topo__progresso" aria-hidden="true"><span data-progresso></span></div>
+  <div class="topo__barra envoltorio">
+    <a class="topo__marca" href="#inicio" aria-label="LEP Plataforma — voltar ao início">
+      <Marca />
+    </a>
+
+    <button
+      class="topo__alternar"
+      type="button"
+      aria-expanded="false"
+      aria-controls="navegacao"
+      data-alternar-menu
+    >
+      <span class="topo__alternar-texto">Seções</span>
+      <span class="topo__alternar-icone" aria-hidden="true"></span>
+    </button>
+
+    <nav id="navegacao" class="topo__nav" aria-label="Seções da página" data-nav>
+      <ol>
+        {secoes.map((s, i) => (
+          <li>
+            <a href={`#${s.id}`} data-link-secao={s.id}>
+              <span class="topo__num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              {s.rotulo}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  </div>
+</header>

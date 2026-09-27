@@ -1,0 +1,33 @@
+---
+// Símbolo da LEP (colchete + LEP). Herda a cor via `currentColor`.
+// `contorno` desenha só o traço — usado como "planta" do logo no hero.
+import { LEP_MARK_PATH, LEP_MARK_VIEWBOX } from "../data/lep-mark-path";
+
+interface Props {
+  class?: string;
+  titulo?: string;
+  contorno?: boolean;
+}
+const { class: className, titulo, contorno = false } = Astro.props;
+---
+<svg
+  class={className}
+  viewBox={LEP_MARK_VIEWBOX}
+  xmlns="http://www.w3.org/2000/svg"
+  role={titulo ? "img" : undefined}
+  aria-label={titulo}
+  aria-hidden={titulo ? undefined : "true"}
+  focusable="false"
+>
+  {contorno ? (
+    <path
+      d={LEP_MARK_PATH}
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3.5"
+      pathLength="1"
+    />
+  ) : (
+    <path d={LEP_MARK_PATH} fill="currentColor" fill-rule="evenodd" />
+  )}
+</svg>

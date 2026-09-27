@@ -1,0 +1,14 @@
+---
+// Assinatura da Plataforma: o símbolo oficial da LEP com "PLATAFORMA"
+// no lugar de "FILMES", no mesmo tratamento espaçado do logo original.
+import LepMark from "./LepMark.astro";
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+<span class:list={["marca", className]}>
+  <LepMark class="marca__simbolo" titulo="LEP" />
+  <span class="marca__descritor">Plataforma</span>
+</span>

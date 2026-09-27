@@ -1,0 +1,38 @@
+---
+import LepMark from "./LepMark.astro";
+import { plataforma } from "../data/plataforma";
+---
+<section id="inicio" class="hero" aria-labelledby="hero-titulo">
+  <div class="hero__grade" aria-hidden="true"></div>
+  <LepMark class="hero__planta" contorno />
+
+  <div class="hero__quadro envoltorio">
+    <span class="canto canto--se" aria-hidden="true"></span>
+    <span class="canto canto--sd" aria-hidden="true"></span>
+    <span class="canto canto--ie" aria-hidden="true"></span>
+    <span class="canto canto--id" aria-hidden="true"></span>
+
+    <div class="hero__meta revelar">
+      <p class="rotulo">{plataforma.nome}</p>
+      <p class="selo-status">
+        <span class="rec" aria-hidden="true"></span>
+        {plataforma.status}
+      </p>
+    </div>
+
+    <h1 id="hero-titulo" class="hero__titulo revelar">
+      Inteligência e automação para o <em>audiovisual.</em>
+    </h1>
+
+    <p class="hero__apoio revelar">{plataforma.apoio}</p>
+
+    <div class="hero__rodape revelar">
+      <a class="rotulo hero__seguir" href="#casa">
+        <span aria-hidden="true">↓</span> Conheça a casa da LEP
+      </a>
+      <p class="rotulo timecode" aria-hidden="true">
+        TC <span data-timecode>00:00:00:00</span>
+      </p>
+    </div>
+  </div>
+</section>
